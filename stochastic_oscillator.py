@@ -21,7 +21,8 @@ def sma(array, window):
     sma = np.empty(window + len(arr), dtype=arr.dtype)
     sma[:window] = np.nan * window
     sma[window:] = arr
-    sma[np.isnan(sma)] = np.nanmean(sma)
+    # fill missing values by taking mean of first values upto chosen period 
+    sma[np.isnan(sma)] = np.nanmean(arr[:period])
     
     return sma
 
