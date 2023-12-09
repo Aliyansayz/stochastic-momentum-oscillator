@@ -13,6 +13,17 @@ def sma (  array, period ):
           sma[i-1] = np.mean(array[i-period:i] , dtype=np.float16)
     return sma 
      
+def sma(array, window):
+  
+    weights =  np.ones(window) / window
+    arr     =  np.convolve(array, weights, mode='valid')
+  
+    sma = np.empty(window + len(arr), dtype=arr.dtype)
+    sma[:window] = np.nan * window
+    sma[window:] = arr
+    sma[np.isnan(sma)] = np.nanmean(sma)
+    
+    return sma
 
 def moving_min ( array, period ):
     import numpy as np
