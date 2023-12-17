@@ -4,7 +4,7 @@ Customized Indicator For Stochastic Momentum Index With Smi line and Smi_Ema lin
 if smi crosses above smi_ema then go long and crosses below go short. 
 """
 
-class stochastic_momentum_index(stochastic_oscillator):
+class stochastic_momentum_index:
 
   def  stochastic_momentum_index(self, high, low, close, period= 20, ema_period = 5):
 
